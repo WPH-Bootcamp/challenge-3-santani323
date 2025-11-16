@@ -2,7 +2,7 @@
 
 const prompt = require('prompt-sync')();
 
-// Function to get valid number input from user
+ 
 function getValidNumberInput(promptMessage) {
   let input;
   let number;
@@ -19,7 +19,7 @@ function getValidNumberInput(promptMessage) {
   }
 }
 
-// Function to get valid operator input from user
+ 
 function getValidOperatorInput(promptMessage) {
   const validOperators = ['+', '-', '*', '/', '%', '**'];
   let operator;
@@ -35,7 +35,7 @@ function getValidOperatorInput(promptMessage) {
   }
 }
 
-// Arithmetic operation functions
+ 
 function add(a, b) {
   return a + b;
 }
@@ -63,19 +63,19 @@ function power(a, b) {
   return a ** b;
 }
 
-// Main calculator logic
+ 
 function calculator() {
   console.log("=== Interactive Calculator & Data Analyzer ===\n");
   
   while (true) {
-    // Get inputs from user
+ 
     const num1 = getValidNumberInput("Enter the first number: ");
     const num2 = getValidNumberInput("Enter the second number: ");
     const operator = getValidOperatorInput("Enter an operator (+, -, *, /, %, **): ");
     
     let result;
     
-    // Use switch to perform the operation
+ 
     switch (operator) {
       case '+':
         result = add(num1, num2);
@@ -99,18 +99,17 @@ function calculator() {
         result = "Error: Invalid operator!";
     }
     
-    // Display result
+ 
     console.log(`\nResult: ${result}`);
     
-    // Data type analysis and conditional output
+ 
     const resultType = typeof result;
     console.log(`Data Type: ${resultType}`);
-    
-    // Handle nullish values using Nullish Coalescing Operator
+ 
     const displayResult = result ?? "Result is undefined or null, something went wrong!";
     
     if (resultType === 'number') {
-      // Check if positive, negative, or zero
+    
       if (result > 0) {
         console.log("The result is Positive");
       } else if (result < 0) {
@@ -119,18 +118,18 @@ function calculator() {
         console.log("The result is Zero");
       }
       
-      // Check if integer or floating-point
+   
       if (Number.isInteger(result)) {
         console.log("The result is an Integer");
       } else {
         console.log("The result is a Floating-point number");
       }
       
-      // Check if even or odd using ternary operator
+  
       const evenOrOdd = result % 2 === 0 ? "Even" : "Odd";
       console.log(`The result is ${evenOrOdd}`);
       
-      // Complex condition using logical operators
+  
       if (result > 0 && result % 2 === 0) {
         console.log("The result is Positive and Even");
       } else if (result > 0 && result % 2 !== 0) {
@@ -142,14 +141,14 @@ function calculator() {
       }
       
     } else if (resultType === 'string') {
-      // Handle string results (error messages)
+     
       console.log(`Error Message: ${result}`);
     } else {
-      // Handle undefined or null
+      
       console.log(displayResult);
     }
     
-    // Ask if user wants to continue
+    
     console.log("\n" + "=".repeat(50));
     const continueCalc = prompt("Do you want to perform another calculation? (yes/no): ");
     
@@ -162,5 +161,5 @@ function calculator() {
   }
 }
 
-// Run the calculator
+ 
 calculator();
